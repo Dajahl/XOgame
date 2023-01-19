@@ -10,23 +10,19 @@ def welcome():
     print("                      ")
 
 def show_field(f):
-
     num ='  0 1 2'
     print()
     print(num)
-    #zip
     for row,i in zip(f,num.split()):
         print (f"{i} {' '.join(str(j) for j in row)}")
 
 def users_input(f,user):
-
     while True:
         print()
         place=input(f"Ходит {user} .Введите координаты:").split()
         if len(place)!=2:
             print('Введите две координаты')
             continue
-        #is digit str
         if not(place[0].isdigit() and place[1].isdigit()):
             print('Введите числа')
             continue
@@ -40,15 +36,12 @@ def users_input(f,user):
         break
     return x,y
 
-
 def win_position(f,user):
-
     f_list=[]
     for l in f:
         f_list+=l
     positions=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     indices = set([i for i, x in enumerate(f_list) if x == user])
-
     for p in positions:
         if len(indices.intersection(set(p)))==3:
             return True
@@ -56,7 +49,6 @@ def win_position(f,user):
 
 
 def start(field):
-
     count=0
     while True:
         show_field(field)
@@ -67,7 +59,6 @@ def start(field):
         if count<9:
             x, y = users_input(field,user)
             field[x][y] = user
-
         elif count==9:
             print ('Ничья')
             break
